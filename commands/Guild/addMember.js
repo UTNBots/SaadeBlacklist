@@ -16,7 +16,7 @@ module.exports = {
             .setDescription("Reden van de blacklist")
             .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
-    async execute(interaction) {
+    async execute(interaction,bot) {
         var discordId = interaction.options.getString("discordid");
         var reden = interaction.options.getString("reden");
         var con = mysql.createConnection({
@@ -45,6 +45,19 @@ module.exports = {
                         console.log(`Error: ${err.message}`)
                     } else {
                         interaction.reply("De gebruiker is succesvol opgeslagen")
+                        bot.guilds.cache.forEach(guild => {
+                            if(guild.members.fetch(discordId)){
+                                try {
+                                guild.members.fetch(discordId).then((member) => {
+                                    console.log(member)
+                                    member.kick(`SaadeBlacklist kick: ${reden}`)
+                                })
+                                } catch (error){
+                                    console.log(`Kon ${discordId} niet kicken in ${guild.name}`)
+                                    console.log(error)
+                                }
+                            }
+                        });
                     }
                     con.end(function(err){
                         if (err){
