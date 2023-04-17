@@ -7,4 +7,8 @@ client.once(Events.ClientReady, c => {
     console.log("Bot is opgestart");
 });
 
+client.on("guildMemberAdd", member => {
+    console.log(member)
+})
+
 client.login(token);
