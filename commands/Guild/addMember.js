@@ -46,7 +46,8 @@ module.exports = {
                     } else {
                         interaction.reply("De gebruiker is succesvol opgeslagen")
                         bot.guilds.cache.forEach(guild => {
-                            if(guild.members.fetch(discordId)){
+                            let member = guild.members.cache.get(discordId)
+                            if(member){
                                 try {
                                 guild.members.fetch(discordId).then((member) => {
                                     member.kick(`SaadeBlacklist kick: ${reden}`)
