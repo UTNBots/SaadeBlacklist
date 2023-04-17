@@ -49,7 +49,6 @@ module.exports = {
                             if(guild.members.fetch(discordId)){
                                 try {
                                 guild.members.fetch(discordId).then((member) => {
-                                    console.log(member)
                                     member.kick(`SaadeBlacklist kick: ${reden}`)
                                 })
                                 } catch (error){
