@@ -1,0 +1,27 @@
+{
+  "name": "saadeblacklist",
+  "version": "1.0.0",
+  "description": "Saade blacklistBot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UTNBots/SaadeBlacklist.git"
+  },
+  "keywords": [
+    "Saade",
+    "community",
+    "blacklist"
+  ],
+  "author": "UnknownUser#3565",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UTNBots/SaadeBlacklist/issues"
+  },
+  "homepage": "https://github.com/UTNBots/SaadeBlacklist#readme",
+  "dependencies": {
+    "discord.js": "^14.9.0"
+  }
+}
