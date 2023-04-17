@@ -1,4 +1,4 @@
-const {SlashCommandBuilder} = require('discord.js');
+const {SlashCommandBuilder, PermissionFlagsBits} = require('discord.js');
 const {DBHost,DBUser,DBPassword,DBDatabase} = require('../../config.json');
 const mysql = require('mysql2');
 
@@ -14,7 +14,8 @@ module.exports = {
         .addStringOption(option => 
             option.setName("reden")
             .setDescription("Reden van de blacklist")
-            .setRequired(true)),
+            .setRequired(true))
+        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     async execute(interaction) {
         var discordId = interaction.options.getString("discordid");
         var reden = interaction.options.getString("reden");
