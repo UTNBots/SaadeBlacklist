@@ -5,15 +5,15 @@ const mysql = require('mysql2');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('addmember')
-        .setDescription('Add een member aan de database')
+        .setDescription('Add een member to the database')
         .addStringOption(option => 
             option.setName("discordid")
-            .setDescription("DiscordId van de gebruiker")
+            .setDescription("DiscordId from gebruiker")
             .setRequired(true)
         )
         .addStringOption(option => 
-            option.setName("reden")
-            .setDescription("Reden van de blacklist")
+            option.setName("reason")
+            .setDescription("reason for the blacklist")
             .setRequired(true))
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     async execute(interaction,bot) {
