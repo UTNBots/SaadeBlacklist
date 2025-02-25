@@ -18,7 +18,7 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
     async execute(interaction,bot) {
         var discordId = interaction.options.getString("discordid");
-        var reden = interaction.options.getString("reden");
+        var reden = interaction.options.getString("reason");
         var con = mysql.createConnection({
             connectionLimit: 10,
             host: DBHost,

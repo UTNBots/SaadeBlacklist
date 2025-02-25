@@ -1,4 +1,4 @@
-const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
+const {Client, Collection, Events, GatewayIntentBits, EmbedBuilder} = require('discord.js');
 const {token,DBHost,DBUser,DBPassword,DBDatabase} = require('./config.json');
 const mysql = require('mysql2');
 const fs = require('node:fs');
@@ -26,8 +26,19 @@ for (const folder of commandFolders) {
 }
 
 client.once(Events.ClientReady, c => {
-    console.log("Bot is opgestart");
+    console.log("Bot is opgestart");    
 });
+
+client.on("guildCreate", guild => {
+    const embed = new EmbedBuilder()
+    .setTitle("Toegevoegd aan nieuwe server")
+    .setDescription(`Naam: ${guild.name}
+        Owner: <@${guild.ownerId}>
+        Total members: ${guild.memberCount}`)
+    const sendServer = client.guilds.cache.get("629454545759502376")
+    const channel = sendServer.channels.cache.get("1344003128986701835")
+    channel.send({embeds:[embed]})
+})
 
 client.on("guildMemberAdd", member => {
     var con = mysql.createConnection({
